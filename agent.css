@@ -1,9 +1,9 @@
 .run-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: minmax(280px, 1fr) auto;
   gap: 8px;
   align-items: end;
-  min-width: 620px;
+  min-width: 470px;
 }
 .run-controls label {
   color: var(--muted);
@@ -15,6 +15,46 @@
   min-width: 0;
   margin: 5px 0 0;
 }
+.case-picker {
+  margin: 0 0 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.case-picker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.case-picker-head small { color: var(--blue); font-weight: 800; letter-spacing: .08em; }
+.case-picker-head h3 { margin: 3px 0 0; }
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.case-choice {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 6px 10px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  background: #f8fafb;
+  color: var(--text);
+  text-align: left;
+}
+.case-choice:hover { border-color: #8caec2; background: #f2f8fb; }
+.case-choice.selected { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(29,93,128,.13); background: #edf6fb; }
+.case-choice img { width: 64px; height: 54px; grid-row: 1 / 3; object-fit: cover; border: 1px solid #d8e1e6; background: #eef2f4; }
+.case-choice span { min-width: 0; align-self: center; }
+.case-choice b, .case-choice small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.case-choice small { margin-top: 3px; color: var(--muted); }
+.case-choice em { color: var(--blue); font-size: 9px; font-style: normal; font-weight: 800; letter-spacing: .04em; }
+.visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
 .agent-summary {
   display: grid;
   grid-template-columns: 220px 260px 1fr;
@@ -30,7 +70,9 @@
 @media (max-width: 1100px) {
   .workspace-head { display: block; }
   .run-controls { min-width: 0; margin-top: 16px; }
+  .case-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
   .run-controls, .agent-summary { grid-template-columns: 1fr; }
+  .case-gallery { grid-template-columns: 1fr; }
 }
